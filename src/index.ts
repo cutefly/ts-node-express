@@ -13,7 +13,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
-app.get("/sqids", (req: Request, res: Response) => {
+app.get("/sqids-demo", (req: Request, res: Response) => {
   const alphabet = process.env.SQIDS_ALPHABET || '';
   const minLength = parseInt(process.env.SQIDS_MIN_LENGTH || '');
 
@@ -30,7 +30,7 @@ app.get("/sqids", (req: Request, res: Response) => {
   res.send(id + ' => ' + numbers + '\n');
 });
 
-app.get("/hashids", (req: Request, res: Response) => {
+app.get("/hashids-demo", (req: Request, res: Response) => {
   const salt = process.env.HASHIDS_SALT || '';
   const alphabet = process.env.HASHIDS_ALPHABET || '';
   const minLength = parseInt(process.env.HASHIDS_MIN_LENGTH || ''); 
@@ -45,9 +45,15 @@ app.get("/hashids", (req: Request, res: Response) => {
   const value = hashids.encode([orgValue]);
   const decoded = hashids.decode(value);
   console.log(`id: ${value}, numbers: ${decoded}`);
-  res.send(decoded + ' => ' + value + '\n');
+  res.send(value + ' => ' + decoded + '\n');
 });
-  
+
+const sqidsRouter = require("./router/sqids");
+const hashidsRouter = require("./router/hashids");
+
+app.use("/sqids", sqidsRouter);
+app.use("/hashids", hashidsRouter);
+
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });

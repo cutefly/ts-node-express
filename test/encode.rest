@@ -1,0 +1,17 @@
+###
+GET http://localhost:3000/sqids/encode/1
+
+###
+GET http://localhost:3000/sqids/encode/100000
+
+###
+GET http://localhost:3000/sqids/decode/cV0xuR35
+
+###
+GET http://localhost:3000/hashids/encode/1
+
+###
+GET http://localhost:3000/hashids/encode/100000
+
+###
+GET http://localhost:3000/hashids/decode/sRPCzL3u
