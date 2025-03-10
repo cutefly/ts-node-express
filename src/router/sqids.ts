@@ -18,8 +18,8 @@ router.get("/encode/:sequence", (req: Request, res: Response) => {
   const sequence = Number(req.params.sequence)
   const id = sqids.encode([sequence])
 
-  console.log(`sequence: ${sequence}, id: ${id}`);
-  res.send(sequence + ' => ' + id + '\n');
+  console.log(`sequence: ${sequence}, id: ${id}, length: ${id.length}`)
+  res.send(sequence + ' => ' + id + '\n')
 });
 
 router.get("/decode/:id", (req: Request, res: Response) => {
@@ -27,8 +27,21 @@ router.get("/decode/:id", (req: Request, res: Response) => {
   const numbers = sqids.decode(id)
   const sequence = numbers[0]
 
-  console.log(`id: ${id}, sequence: ${sequence}`);
-  res.send(id + ' => ' + numbers + '\n');
+  console.log(`id: ${id}, sequence: ${sequence}`)
+  res.send(id + ' => ' + numbers + '\n')
+});
+
+router.get("/batch/:sequence", (req: Request, res: Response) => {
+  let maxSequence: number = Number(req.params.sequence)
+  let id: string
+
+  console.log(`start generate sqids : ${maxSequence}`)
+  for (let i = 1; i <= maxSequence; i++) {
+    id = sqids.encode([i])
+    console.log(`sequence: ${i}, id: ${id}`)
+  }
+  console.log(`finish generate sqids : ${maxSequence}`)
+  res.send(`finish generate ${maxSequence} hashids\n`)
 });
 
 module.exports = router;

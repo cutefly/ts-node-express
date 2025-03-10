@@ -21,7 +21,7 @@ router.get("/encode/:sequence", (req: Request, res: Response) => {
   const sequence = Number(req.params.sequence)
   const id = hashids.encode([sequence])
 
-  console.log(`sequence: ${sequence}, id: ${id}`);
+  console.log(`sequence: ${sequence}, id: ${id}, length: ${id.length}`) ;
   res.send(sequence + ' => ' + id + '\n');
 });
 

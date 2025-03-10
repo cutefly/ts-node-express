@@ -1,8 +1,8 @@
 ###
 GET http://localhost:3000/sqids/encode/1
 
-###
-GET http://localhost:3000/sqids/encode/100000
+### max: 1727094849535 => 66666666
+GET http://localhost:3000/sqids/encode/1727094849535
 
 ###
 GET http://localhost:3000/sqids/decode/cV0xuR35
@@ -10,8 +10,8 @@ GET http://localhost:3000/sqids/decode/cV0xuR35
 ###
 GET http://localhost:3000/hashids/encode/1
 
-###
-GET http://localhost:3000/hashids/encode/100000
+### max: 78364164095 -> FGGGGGGG
+GET http://localhost:3000/hashids/encode/78364164095
 
 ###
-GET http://localhost:3000/hashids/decode/sRPCzL3u
+GET http://localhost:3000/hashids/decode/FGGGGGGG
